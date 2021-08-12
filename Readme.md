@@ -17,9 +17,9 @@ pip install opencv-contrib-python
 import cv2 as cv
 
 # Read image file using imread method
-img = cv.imread('path/to/image.jpg')
+img = cv.imread('static/sampleimg.jpg')
 # View image using the imshow method
-cv.imshow('window name',img)
+cv.imshow('Sample Image',img)
 cv.waitKey(0) # 0 will set no time limit untill we press a key.
 ```
 ### 1.2 Read video
@@ -27,7 +27,7 @@ cv.waitKey(0) # 0 will set no time limit untill we press a key.
 import cv2 as cv
 
 # Can able to yield frames from video using VideoCapture method, it takes video path(str) or webcam (int : 0,1...) as input argument.
-capture = cv.VideoCapture('path/to/video.mp4') 
+capture = cv.VideoCapture('static/sampleseed.mp4') 
 while True:
     isTrue,frame = capture.read()
     if isTrue :
@@ -38,6 +38,11 @@ capture.release()
 cv.destroyAllWindows()
 
 ```
+<img src="static/sampleimg.jpg" alt="alt text" width="150" height="150">
+
+[sample image](static/sampleimg.jpg)   
+[sample video](static/sampleseed.mp4)
+
 ## 2. Resizing and Rescaling <a name='-2.-resizing-and-rescaling'></a>   
 ### 2.1 Rescaling video and image   
 Using resize method, we can change resize the image
@@ -207,6 +212,10 @@ blank[:] = 0,255,0 # Green for all the pixels
 cv.imshow('Green canvas',blank)
 cv.waitKey(0)
 ```
+<img src="static/03/03.01-GreenCanvas.png" alt="alt text" width="150" height="150">
+
+[sample image](static/03/03.01-GreenCanvas.png)  
+
 #### Paint specific area of the canvas to certain colour   
 ```python
 
@@ -221,6 +230,10 @@ blank[0:100,200:300] = 0,0,255 # Row 0 to 100 and then column 200:300
 cv.imshow('Green canvas',blank)
 cv.waitKey(0)
 ```
+<img src="static/03/03-DrawOnCanvas.png" alt="alt text" width="150" height="150">
+
+[sample image](static/03/03-DrawOnCanvas.png) 
+
 #### Draw a Rectangle
 ```python
 blank = cv.imread('static/sampleimg.jpg')
@@ -228,23 +241,33 @@ cv.rectangle(blank,(0,0),(250,250),(0,255,0,0.5),thickness=cv.FILLED)
 # image, point1(x,y), point2(x,y), colour(r,g,b), thickness(int or cv.FILLED), linetype(str)
 cv.imshow('Rectangle',blank)
 
-cv.waitKey(0)
+cv.waitKey(0))
 ```
+<img src="static/03/03.2-DrawRectangle.png" alt="alt text" width="320" height="208">
+
+[sample image](static/03/03.2-DrawRectangle.png)  
+
 #### Draw a Circle
 ```python
 blank = cv.imread('static/sampleimg.jpg')
-cv.circle(blank,(blank.shape[1]//2,blank.shape[1]//2),40,(0,255,0),thickness=1)
+cv.circle(blank,(blank.shape[1]//2,blank.shape[0]//2),40,(0,255,0),thickness=-1)
 # image, cenetr point(x,y), redious(int), colour(r,g,b), thickness(int or cv.FILLED), linetype(str)
-cv.imshow('Rectangle',blank)
+cv.imshow('Circle',blank)
 
 cv.waitKey(0)
 ```
+<img src="static/03/03.03DrawCircle.png" alt="alt text" width="320" height="208">
+
+[sample image](static/03/03.03DrawCircle.png)  
 #### Draw a Line
 ```python
 blank = cv.imread('static/sampleimg.jpg')
-cv.line(blank,(10,10),(50,50),(0,255,0),thickness=5)
+cv.line(blank,(blank.shape[1]//4,blank.shape[0]//4),(blank.shape[1]//4 *3,blank.shape[0]//4 *3),(0,255,0),thickness=5)
 # image, point1(x,y), point2(x,y), colour(r,g,b), thickness(+ve int), linetype(str)
-cv.imshow('Rectangle',blank)
+cv.imshow('Line',blank)
 
 cv.waitKey(0)
 ```
+<img src="static/03/03.04LineDraw.png" alt="alt text" width="320" height="208">
+
+[sample image](static/03/03.04LineDraw.png)  
